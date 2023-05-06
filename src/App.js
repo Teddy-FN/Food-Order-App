@@ -1,8 +1,9 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 // Components
 import Header from "./Components/Layout/Header";
 import Meals from "./Components/Meals/Meals";
 import Cart from "./Components/Cart/Cart";
+import CartProvider from "./Store/CartProvider";
 
 function App() {
   const [modalCartShown, setModalCartShown] = useState(false);
@@ -11,13 +12,13 @@ function App() {
   const hideShownCartHandler = () => setModalCartShown(false);
 
   return (
-    <Fragment>
+    <CartProvider>
       {modalCartShown && <Cart hideCartHandler={hideShownCartHandler} />}
       <Header showCartModal={shownCartHandler} />
       <main>
         <Meals />
       </main>
-    </Fragment>
+    </CartProvider>
   );
 }
 

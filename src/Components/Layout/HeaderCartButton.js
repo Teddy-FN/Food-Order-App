@@ -9,8 +9,8 @@ import CartContext from "../../Store/Card-Context";
 const HeaderCartButton = (props) => {
   const context = useContext(CartContext);
 
-  const badgeNumber = context.items.reduce((currNumb, items) => {
-    return currNumb + items;
+  const badgeNumber = context?.items?.reduce((currNumb, items) => {
+    return currNumb + items.amount;
   }, 0);
 
   return (
